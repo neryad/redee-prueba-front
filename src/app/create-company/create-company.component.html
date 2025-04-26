@@ -1,1 +1,145 @@
-<p>create-company works!</p>
+<div class="card bg-base-100 shadow-xl p-6">
+  <h2 class="card-title mb-4">Registrar Nueva Empresa</h2>
+
+  <!-- Formulario Reactivo -->
+  <form
+    [formGroup]="companyForm"
+    (ngSubmit)="onSubmit()"
+    class="flex flex-col gap-4"
+  >
+    <!-- RNC -->
+    <input
+      type="text"
+      formControlName="rnc"
+      placeholder="RNC"
+      class="input input-bordered w-full"
+      [class.input-error]="
+        companyForm.get('rnc')!.invalid && companyForm.get('rnc')!.touched
+      "
+      required
+    />
+    <div
+      *ngIf="companyForm.get('rnc')!.invalid && companyForm.get('rnc')!.touched"
+      class="text-red-500 text-sm"
+    >
+      Este campo es obligatorio
+    </div>
+
+    <!-- Nombre de la empresa -->
+    <input
+      type="text"
+      formControlName="companyName"
+      placeholder="Nombre de la empresa"
+      class="input input-bordered w-full"
+      [class.input-error]="
+        companyForm.get('companyName')!.invalid &&
+        companyForm.get('companyName')!.touched
+      "
+      required
+    />
+    <div
+      *ngIf="
+        companyForm.get('companyName')!.invalid &&
+        companyForm.get('companyName')!.touched
+      "
+      class="text-red-500 text-sm"
+    >
+      Este campo es obligatorio
+    </div>
+
+    <!-- Nombre comercial -->
+    <input
+      type="text"
+      formControlName="comercialName"
+      placeholder="Nombre comercial"
+      class="input input-bordered w-full"
+      [class.input-error]="
+        companyForm.get('comercialName')!.invalid &&
+        companyForm.get('comercialName')!.touched
+      "
+      required
+    />
+    <div
+      *ngIf="
+        companyForm.get('comercialName')!.invalid &&
+        companyForm.get('comercialName')!.touched
+      "
+      class="text-red-500 text-sm"
+    >
+      Este campo es obligatorio
+    </div>
+
+    <!-- Categoría -->
+    <input
+      type="text"
+      formControlName="category"
+      placeholder="Categoría"
+      class="input input-bordered w-full"
+    />
+
+    <!-- Esquema de pago -->
+    <input
+      type="text"
+      formControlName="paymentSchema"
+      placeholder="Esquema de pago"
+      class="input input-bordered w-full"
+      [class.input-error]="
+        companyForm.get('paymentSchema')!!.invalid &&
+        companyForm.get('paymentSchema')!!.touched
+      "
+      required
+    />
+    <div
+      *ngIf="
+        companyForm.get('paymentSchema')!.invalid &&
+        companyForm.get('paymentSchema')!.touched
+      "
+      class="text-red-500 text-sm"
+    >
+      Este campo es obligatorio
+    </div>
+
+    <!-- Estado -->
+    <select
+      formControlName="status"
+      class="select select-bordered w-full"
+      required
+    >
+      <option disabled selected>Seleccionar estado</option>
+      <option>Activo</option>
+      <option>Inactivo</option>
+    </select>
+
+    <!-- Actividad económica -->
+    <input
+      type="text"
+      formControlName="activityEconomics"
+      placeholder="Actividad económica"
+      class="input input-bordered w-full"
+      required
+    />
+
+    <!-- Rama gubernamental -->
+    <input
+      type="text"
+      formControlName="governanceBranch"
+      placeholder="Rama gubernamental"
+      class="input input-bordered w-full"
+      required
+    />
+
+    <!-- Botones -->
+    <div class="flex gap-4 mt-6">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="companyForm.invalid"
+      >
+        Guardar
+      </button>
+      <button type="button" class="btn btn-outline" (click)="onCancel()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
