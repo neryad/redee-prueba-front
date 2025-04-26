@@ -17,11 +17,20 @@
       </thead>
       <tbody>
         <!-- Aquí iría un *ngFor para listar empresas -->
-        <tr>
-          <td>123456789</td>
-          <td>Empresa X</td>
-          <td>Comercial X</td>
-          <td><span class="badge badge-success">Activo</span></td>
+        <tr *ngFor="let company of companies">
+          <td>{{ company.rnc || "Sdsd" }}</td>
+          <td>{{ company.name }} X</td>
+          <td>{{ company.commercialName }}</td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="{
+                'badge-success': company.status === 'Activa',
+                'badge-error': company.status === 'Inactiva'
+              }"
+              >{{ company.status }}</span
+            >
+          </td>
           <td class="text-center">
             <div class="flex gap-2 justify-center">
               <button class="btn btn-sm btn-warning btn-outline">Editar</button>
