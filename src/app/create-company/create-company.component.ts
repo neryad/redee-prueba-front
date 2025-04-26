@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class CreateCompanyComponent {
   companyForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.companyForm = this.fb.group({
       rnc: ['', Validators.required],
       companyName: ['', Validators.required],
@@ -36,6 +36,6 @@ export class CreateCompanyComponent {
     this.companyForm.reset();
     console.log('Form reset');
 
-    // this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 }
