@@ -1,1 +1,35 @@
-<p>manage-company works!</p>
+<div class="card bg-base-100 shadow-xl p-6">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="card-title">Lista de Empresas</h2>
+    <a routerLink="/" class="btn btn-sm btn-neutral"> Volver al Inicio </a>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="table table-zebra w-full">
+      <thead class="text-base-content">
+        <tr>
+          <th>RNC</th>
+          <th>Nombre</th>
+          <th>Nombre Comercial</th>
+          <th>Estado</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí iría un *ngFor para listar empresas -->
+        <tr>
+          <td>123456789</td>
+          <td>Empresa X</td>
+          <td>Comercial X</td>
+          <td><span class="badge badge-success">Activo</span></td>
+          <td class="text-center">
+            <div class="flex gap-2 justify-center">
+              <button class="btn btn-sm btn-warning btn-outline">Editar</button>
+              <button class="btn btn-sm btn-error btn-outline">Eliminar</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
