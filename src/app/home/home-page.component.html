@@ -1,0 +1,70 @@
+<main
+  class="min-h-screen flex flex-col items-center justify-center bg-base-200 p-6"
+>
+  <!-- Bienvenida -->
+  <div class="text-center mb-12">
+    <h1 class="text-4xl font-bold text-primary mb-4">
+      ¡Bienvenido a la Gestión de Empresas!
+    </h1>
+    <p class="text-lg text-gray-600">Selecciona una opción para comenzar:</p>
+  </div>
+
+  <!-- Opciones -->
+  <div class="flex flex-col md:flex-row gap-8">
+    <!-- Card Crear Empresa -->
+    <div
+      class="card w-80 bg-white shadow-xl hover:shadow-2xl transition transform hover:scale-105"
+    >
+      <figure class="px-10 pt-10">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-20 w-20 text-primary"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2M16 3h5v5h-5V3zM4 13h16M4 17h16M4 21h16"
+          />
+        </svg>
+      </figure>
+      <div class="card-body items-center text-center">
+        <h2 class="card-title">Crear Empresa</h2>
+        <div class="card-actions">
+          <a routerLink="/create" class="btn btn-primary">Crear</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card Gestionar Empresas -->
+    <div
+      class="card w-80 bg-white shadow-xl hover:shadow-2xl transition transform hover:scale-105"
+    >
+      <figure class="px-10 pt-10">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-20 w-20 text-success"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12h6m-6 4h6m2 6H7a2 2 0 01-2-2V5a2 2 0 012-2h3l1-1h4l1 1h3a2 2 0 012 2v15a2 2 0 01-2 2z"
+          />
+        </svg>
+      </figure>
+      <div class="card-body items-center text-center">
+        <h2 class="card-title">Gestionar Empresas</h2>
+        <div class="card-actions">
+          <a routerLink="/manage" class="btn btn-success">Gestionar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
