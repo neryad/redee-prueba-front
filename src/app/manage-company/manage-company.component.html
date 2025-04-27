@@ -34,7 +34,12 @@
           <td class="text-center">
             <div class="flex gap-2 justify-center">
               <button class="btn btn-sm btn-warning btn-outline">Editar</button>
-              <button class="btn btn-sm btn-error btn-outline">Eliminar</button>
+              <button
+                (click)="onDelete(company.id)"
+                class="btn btn-sm btn-error btn-outline"
+              >
+                Eliminar
+              </button>
             </div>
           </td>
         </tr>

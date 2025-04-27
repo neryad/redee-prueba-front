@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { CompanyService } from '../shared/services/company.service';
 import { Companies } from '../shared/interface/company.interface';
 import { CommonModule } from '@angular/common';
+import { SweetAlertService } from '../shared/services/sweet-alert.service';
 
 @Component({
   selector: 'app-manage-company',
@@ -12,7 +13,10 @@ import { CommonModule } from '@angular/common';
 })
 export class ManageCompanyComponent implements OnInit {
   companies: Companies[] = [];
-  constructor(private companyService: CompanyService) {
+  constructor(
+    private companyService: CompanyService,
+    private sweetAlert: SweetAlertService
+  ) {
     // Constructor logic here
   }
   ngOnInit(): void {
@@ -23,6 +27,17 @@ export class ManageCompanyComponent implements OnInit {
     this.companyService.getCompanies().subscribe((data: Companies[]) => {
       this.companies = data;
       console.log(this.companies);
+    });
+  }
+  onDelete(id: number) {
+    this.sweetAlert.confirmDelete().then((result) => {
+      if (result.isConfirmed) {
+        this.companyService.deleteCompany(id).subscribe(() => {
+          this.sweetAlert.success('Compañía eliminada con éxito').then(() => {
+            this.getCompanies();
+          });
+        });
+      }
     });
   }
 }
