@@ -2,6 +2,12 @@
 
 Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 19.2.4.
 
+## Demo en Vivo
+
+🌐 Puedes probar una versión en vivo del proyecto aquí: [Demo del Sistema de Gestión de Empresas](https://tu-url-de-demo.com)
+
+> **Nota**: La demo está alojada en [servicio-de-hosting] y representa la última versión estable del proyecto.
+
 ## Características
 
 - 🏢 Gestión de Empresas
