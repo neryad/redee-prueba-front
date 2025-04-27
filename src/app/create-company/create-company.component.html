@@ -1,5 +1,7 @@
 <div class="card bg-base-100 shadow-xl p-6">
-  <h2 class="card-title mb-4">Registrar Nueva Empresa</h2>
+  <h2 class="card-title mb-4">
+    {{ companyToEdit ? "Editar Empresa" : "Registrar Nueva Empresa" }}
+  </h2>
 
   <!-- Formulario Reactivo -->
   <form
@@ -104,7 +106,7 @@
       required
     >
       <option disabled selected>Seleccionar estado</option>
-      <option>Activo</option>
+      <option>Activa</option>
       <option>Inactivo</option>
     </select>
 
@@ -133,7 +135,7 @@
         class="btn btn-primary"
         [disabled]="companyForm.invalid"
       >
-        Guardar
+        {{ companyToEdit ? "Editar" : "Guardar" }}
       </button>
       <button type="button" class="btn btn-outline" (click)="onCancel()">
         Cancelar

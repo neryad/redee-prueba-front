@@ -1,23 +1,29 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CompanyService } from '../shared/services/company.service';
+import { Companies } from '../shared/interface/company.interface';
 @Component({
   selector: 'app-create-company',
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './create-company.component.html',
   styleUrl: './create-company.component.css',
 })
-export class CreateCompanyComponent {
+export class CreateCompanyComponent implements OnInit {
   companyForm: FormGroup;
+  @Input() companyToEdit?: Companies;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private companyService: CompanyService
   ) {
+    const navigation = this.router.getCurrentNavigation();
+
+    this.companyToEdit = navigation?.extras.state?.['company'];
+
     this.companyForm = this.fb.group({
       rnc: ['', Validators.required],
       name: ['', Validators.required],
@@ -29,14 +35,17 @@ export class CreateCompanyComponent {
       branch: ['', Validators.required],
     });
   }
+  ngOnInit(): void {
+    if (this.companyToEdit) {
+      this.companyForm.patchValue(this.companyToEdit);
+    }
+  }
   onSubmit() {
-    this.saveCompany();
-    // if (this.companyForm.valid) {
-    //   console.log('Form Submitted!', this.companyForm.value);
-    //   // Aquí puedes agregar la lógica para enviar el formulario a tu API o servicio
-    // } else {
-    //   console.log('Form is invalid');
-    // }
+    if (this.companyToEdit) {
+      console.log('Editing company', this.companyForm.value);
+    } else {
+      this.saveCompany();
+    }
   }
   onCancel() {
     this.companyForm.reset();

@@ -33,7 +33,12 @@
           </td>
           <td class="text-center">
             <div class="flex gap-2 justify-center">
-              <button class="btn btn-sm btn-warning btn-outline">Editar</button>
+              <button
+                (click)="onEdit(company)"
+                class="btn btn-sm btn-warning btn-outline"
+              >
+                Editar
+              </button>
               <button
                 (click)="onDelete(company.id)"
                 class="btn btn-sm btn-error btn-outline"

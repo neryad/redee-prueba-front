@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CompanyService } from '../shared/services/company.service';
 import { Companies } from '../shared/interface/company.interface';
 import { CommonModule } from '@angular/common';
@@ -15,7 +15,8 @@ export class ManageCompanyComponent implements OnInit {
   companies: Companies[] = [];
   constructor(
     private companyService: CompanyService,
-    private sweetAlert: SweetAlertService
+    private sweetAlert: SweetAlertService,
+    private router: Router
   ) {
     // Constructor logic here
   }
@@ -39,5 +40,8 @@ export class ManageCompanyComponent implements OnInit {
         });
       }
     });
+  }
+  onEdit(company: Companies) {
+    this.router.navigate(['/create'], { state: { company } });
   }
 }
