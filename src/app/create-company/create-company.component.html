@@ -1,5 +1,5 @@
 <div class="card bg-base-100 shadow-xl p-6">
-  <h2 class="card-title mb-4">
+  <h2 class="card-title mb-6">
     {{ companyToEdit ? "Editar Empresa" : "Registrar Nueva Empresa" }}
   </h2>
 
@@ -9,17 +9,28 @@
     (ngSubmit)="onSubmit()"
     class="flex flex-col gap-4"
   >
-    <!-- RNC -->
-    <input
-      type="text"
-      formControlName="rnc"
-      placeholder="RNC"
-      class="input input-bordered w-full"
-      [class.input-error]="
-        companyForm.get('rnc')!.invalid && companyForm.get('rnc')!.touched
-      "
-      required
-    />
+    <!-- RNC con Botón Buscar -->
+    <div class="flex gap-2">
+      <input
+        [readonly]="!!companyToEdit"
+        type="text"
+        formControlName="rnc"
+        placeholder="RNC"
+        class="input input-bordered w-full"
+        [class.input-error]="
+          companyForm.get('rnc')!.invalid && companyForm.get('rnc')!.touched
+        "
+        required
+      />
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="getCompanyByRNC()"
+      >
+        Buscar
+      </button>
+    </div>
+
     <div
       *ngIf="companyForm.get('rnc')!.invalid && companyForm.get('rnc')!.touched"
       class="text-red-500 text-sm"
@@ -84,8 +95,8 @@
       placeholder="Esquema de pago"
       class="input input-bordered w-full"
       [class.input-error]="
-        companyForm.get('payment')!!.invalid &&
-        companyForm.get('payment')!!.touched
+        companyForm.get('payment')!.invalid &&
+        companyForm.get('payment')!.touched
       "
       required
     />
@@ -106,8 +117,8 @@
       required
     >
       <option disabled selected>Seleccionar estado</option>
-      <option>Activa</option>
-      <option>Inactivo</option>
+      <option>ACTIVO</option>
+      <option>INACTIVO</option>
     </select>
 
     <!-- Actividad económica -->

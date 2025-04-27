@@ -27,4 +27,20 @@ export class CompanyService {
       company
     );
   }
+  updateCompany(id: number, company: Companies) {
+    let updateCompany = {
+      ...company,
+      id: id,
+    };
+    return this.http.put<Companies>(
+      `${environment.apiUrl}/companies/${id}`,
+      updateCompany
+    );
+  }
+
+  getCompanyByRNC(rnc: string) {
+    return this.http.get<Companies>(
+      `${environment.apiUrl}/companies/rnc/${rnc}`
+    );
+  }
 }

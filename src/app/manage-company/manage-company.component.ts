@@ -30,7 +30,6 @@ export class ManageCompanyComponent implements OnInit {
     this.companyService.getCompanies().subscribe((data: Companies[]) => {
       this.companies = data;
       this.isLoading = false;
-      console.log(this.companies);
     });
   }
   onDelete(id: number) {

@@ -6,6 +6,16 @@ import Swal from 'sweetalert2';
 export class SweetAlertService {
   constructor() {}
 
+  loading(message: string = 'Cargando...') {
+    Swal.fire({
+      title: message,
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+  }
+
   success(message = 'Operación exitosa', title = '¡Éxito!') {
     return Swal.fire({
       icon: 'success',
@@ -40,5 +50,9 @@ export class SweetAlertService {
       confirmButtonText: 'Sí, eliminar',
       cancelButtonText: 'Cancelar',
     });
+  }
+
+  close() {
+    Swal.close();
   }
 }
