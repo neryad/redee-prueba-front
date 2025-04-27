@@ -14,4 +14,17 @@ export class CompanyService {
   getCompanies() {
     return this.http.get<Companies[]>(`${environment.apiUrl}/companies`);
   }
+
+  getCompany(id: number) {
+    return this.http.get<Companies>(`${environment.apiUrl}/companies/${id}`);
+  }
+  deleteCompany(id: number) {
+    return this.http.delete(`${environment.apiUrl}/companies/${id}`);
+  }
+  createCompany(company: Companies) {
+    return this.http.post<Companies>(
+      `${environment.apiUrl}/companies`,
+      company
+    );
+  }
 }

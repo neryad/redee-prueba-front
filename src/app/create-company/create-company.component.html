@@ -28,19 +28,17 @@
     <!-- Nombre de la empresa -->
     <input
       type="text"
-      formControlName="companyName"
+      formControlName="name"
       placeholder="Nombre de la empresa"
       class="input input-bordered w-full"
       [class.input-error]="
-        companyForm.get('companyName')!.invalid &&
-        companyForm.get('companyName')!.touched
+        companyForm.get('name')!.invalid && companyForm.get('name')!.touched
       "
       required
     />
     <div
       *ngIf="
-        companyForm.get('companyName')!.invalid &&
-        companyForm.get('companyName')!.touched
+        companyForm.get('name')!.invalid && companyForm.get('name')!.touched
       "
       class="text-red-500 text-sm"
     >
@@ -50,19 +48,19 @@
     <!-- Nombre comercial -->
     <input
       type="text"
-      formControlName="comercialName"
+      formControlName="commercialName"
       placeholder="Nombre comercial"
       class="input input-bordered w-full"
       [class.input-error]="
-        companyForm.get('comercialName')!.invalid &&
-        companyForm.get('comercialName')!.touched
+        companyForm.get('commercialName')!.invalid &&
+        companyForm.get('commercialName')!.touched
       "
       required
     />
     <div
       *ngIf="
-        companyForm.get('comercialName')!.invalid &&
-        companyForm.get('comercialName')!.touched
+        companyForm.get('commercialName')!.invalid &&
+        companyForm.get('commercialName')!.touched
       "
       class="text-red-500 text-sm"
     >
@@ -80,19 +78,19 @@
     <!-- Esquema de pago -->
     <input
       type="text"
-      formControlName="paymentSchema"
+      formControlName="payment"
       placeholder="Esquema de pago"
       class="input input-bordered w-full"
       [class.input-error]="
-        companyForm.get('paymentSchema')!!.invalid &&
-        companyForm.get('paymentSchema')!!.touched
+        companyForm.get('payment')!!.invalid &&
+        companyForm.get('payment')!!.touched
       "
       required
     />
     <div
       *ngIf="
-        companyForm.get('paymentSchema')!.invalid &&
-        companyForm.get('paymentSchema')!.touched
+        companyForm.get('payment')!.invalid &&
+        companyForm.get('payment')!.touched
       "
       class="text-red-500 text-sm"
     >
@@ -113,7 +111,7 @@
     <!-- Actividad económica -->
     <input
       type="text"
-      formControlName="activityEconomics"
+      formControlName="activity"
       placeholder="Actividad económica"
       class="input input-bordered w-full"
       required
@@ -122,7 +120,7 @@
     <!-- Rama gubernamental -->
     <input
       type="text"
-      formControlName="governanceBranch"
+      formControlName="branch"
       placeholder="Rama gubernamental"
       class="input input-bordered w-full"
       required

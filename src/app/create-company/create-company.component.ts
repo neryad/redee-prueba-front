@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CompanyService } from '../shared/services/company.service';
 @Component({
   selector: 'app-create-company',
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
@@ -12,30 +13,51 @@ import { Router } from '@angular/router';
 export class CreateCompanyComponent {
   companyForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private companyService: CompanyService
+  ) {
     this.companyForm = this.fb.group({
       rnc: ['', Validators.required],
-      companyName: ['', Validators.required],
-      comercialName: ['', Validators.required],
+      name: ['', Validators.required],
+      commercialName: ['', Validators.required],
       category: [''],
-      paymentSchema: ['', Validators.required],
+      payment: ['', Validators.required],
       status: ['', Validators.required],
-      activityEconomics: ['', Validators.required],
-      governanceBranch: ['', Validators.required],
+      activity: ['', Validators.required],
+      branch: ['', Validators.required],
     });
   }
   onSubmit() {
-    if (this.companyForm.valid) {
-      console.log('Form Submitted!', this.companyForm.value);
-      // Aquí puedes agregar la lógica para enviar el formulario a tu API o servicio
-    } else {
-      console.log('Form is invalid');
-    }
+    this.saveCompany();
+    // if (this.companyForm.valid) {
+    //   console.log('Form Submitted!', this.companyForm.value);
+    //   // Aquí puedes agregar la lógica para enviar el formulario a tu API o servicio
+    // } else {
+    //   console.log('Form is invalid');
+    // }
   }
   onCancel() {
     this.companyForm.reset();
     console.log('Form reset');
 
     this.router.navigate(['/']);
+  }
+
+  saveCompany() {
+    if (this.companyForm.valid) {
+      this.companyService.createCompany(this.companyForm.value).subscribe({
+        next: (response) => {
+          console.log('Company created successfully', response);
+          this.router.navigate(['/']);
+        },
+        error: (error) => {
+          console.error('Error creating company', error);
+        },
+      });
+    } else {
+      console.log('Form is invalid');
+    }
   }
 }
