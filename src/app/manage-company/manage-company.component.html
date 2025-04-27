@@ -4,7 +4,11 @@
     <a routerLink="/" class="btn btn-sm btn-neutral"> Volver al Inicio </a>
   </div>
 
-  <div class="overflow-x-auto">
+  <div *ngIf="isLoading" class="flex justify-center items-center h-64">
+    <span class="loading loading-spinner loading-xl"></span>
+  </div>
+
+  <div *ngIf="!isLoading" class="overflow-x-auto">
     <table class="table table-zebra w-full">
       <thead class="text-base-content">
         <tr>
@@ -16,7 +20,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Aquí iría un *ngFor para listar empresas -->
         <tr *ngFor="let company of companies">
           <td>{{ company.rnc || "Sdsd" }}</td>
           <td>{{ company.name }} X</td>

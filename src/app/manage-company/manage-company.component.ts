@@ -13,6 +13,7 @@ import { SweetAlertService } from '../shared/services/sweet-alert.service';
 })
 export class ManageCompanyComponent implements OnInit {
   companies: Companies[] = [];
+  isLoading!: boolean;
   constructor(
     private companyService: CompanyService,
     private sweetAlert: SweetAlertService,
@@ -25,8 +26,10 @@ export class ManageCompanyComponent implements OnInit {
   }
 
   getCompanies() {
+    this.isLoading = true;
     this.companyService.getCompanies().subscribe((data: Companies[]) => {
       this.companies = data;
+      this.isLoading = false;
       console.log(this.companies);
     });
   }
