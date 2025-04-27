@@ -1,59 +1,102 @@
-# RedeePruebaFront
+# Sistema de Gestión de Empresas
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 19.2.4.
 
-## Development server
+## Características
 
-To start a local development server, run:
+- 🏢 Gestión de Empresas
+  - Crear nuevas empresas
+  - Listar todas las empresas
+  - Editar empresas existentes
+  - Eliminar empresas
+- 🔍 Búsqueda por RNC
+- 💫 Interfaz moderna con DaisyUI y TailwindCSS
+- 🚀 Diseño Responsivo
+
+## Tecnologías Utilizadas
+
+- Angular 19.2.0
+- TailwindCSS 4.1.4
+- DaisyUI 5.0.28
+- SweetAlert2 11.19.1
+
+## Servidor de Desarrollo
+
+Para iniciar el servidor de desarrollo, ejecuta:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Navega a `http://localhost:4200/`. La aplicación se recargará automáticamente si cambias alguno de los archivos fuente.
 
-## Code scaffolding
+## Generación de Código
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Angular CLI incluye potentes herramientas de generación de código. Para generar un nuevo componente, ejecuta:
 
 ```bash
-ng generate component component-name
+ng generate component nombre-componente
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Para ver la lista completa de esquemáticos disponibles (como `components`, `directives`, o `pipes`), ejecuta:
 
 ```bash
 ng generate --help
 ```
 
-## Building
+## Estructura del Proyecto
 
-To build the project run:
+```
+src/
+├── app/
+│   ├── create-company/    # Creación/edición de empresas
+│   ├── manage-company/    # Listado y gestión de empresas
+│   ├── home/             # Página de inicio
+│   └── shared/           # Componentes y servicios compartidos
+├── environments/         # Configuraciones de entorno
+└── assets/              # Archivos estáticos
+```
+
+## Construcción
+
+Para construir el proyecto ejecuta:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Esto compilará tu proyecto y almacenará los archivos de construcción en el directorio `dist/`. Por defecto, la construcción de producción optimiza tu aplicación para rendimiento y velocidad.
 
-## Running unit tests
+## Ejecutando pruebas unitarias
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Para ejecutar pruebas unitarias con [Karma](https://karma-runner.github.io), usa el siguiente comando:
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+## Ejecutando pruebas end-to-end
 
-For end-to-end (e2e) testing, run:
+Para pruebas end-to-end (e2e), ejecuta:
 
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Angular CLI no incluye un framework de pruebas end-to-end por defecto. Puedes elegir uno que se ajuste a tus necesidades.
 
-## Additional Resources
+## Contribuir
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Haz un Fork del repositorio
+2. Crea tu rama de característica (`git checkout -b feature/NuevaCaracteristica`)
+3. Haz commit de tus cambios (`git commit -m 'Agrega nueva característica'`)
+4. Haz Push a la rama (`git push origin feature/NuevaCaracteristica`)
+5. Crea un Pull Request
+
+## Recursos Adicionales
+
+Para más información sobre el uso de Angular CLI, incluyendo referencias detalladas de comandos, visita la página de [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli).
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT - ver el archivo LICENSE para más detalles
