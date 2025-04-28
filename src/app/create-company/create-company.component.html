@@ -116,7 +116,7 @@
       class="select select-bordered w-full"
       required
     >
-      <option disabled selected>Seleccionar estado</option>
+      <option value="" disabled selected>Seleccionar estado</option>
       <option>ACTIVO</option>
       <option>INACTIVO</option>
     </select>
@@ -146,7 +146,7 @@
         class="btn btn-primary"
         [disabled]="companyForm.invalid"
       >
-        {{ companyToEdit ? "Editar" : "Guardar" }}
+        Guardar
       </button>
       <button type="button" class="btn btn-outline" (click)="onCancel()">
         Cancelar

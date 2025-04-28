@@ -1,7 +1,15 @@
 <div class="card bg-base-100 shadow-xl p-6">
-  <div class="flex items-center justify-between mb-6">
-    <h2 class="card-title">Lista de Empresas</h2>
-    <a routerLink="/" class="btn btn-sm btn-neutral"> Volver al Inicio </a>
+  <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+    <h2 class="card-title text-lg md:text-2xl">Lista de Empresas</h2>
+    <a routerLink="/" class="btn btn-sm btn-neutral">Volver al Inicio</a>
+  </div>
+  <div class="mb-4">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="Buscar empresa..."
+      class="input input-bordered w-full"
+    />
   </div>
 
   <div *ngIf="isLoading" class="flex justify-center items-center h-64">
@@ -9,21 +17,29 @@
   </div>
 
   <div *ngIf="!isLoading" class="overflow-x-auto">
-    <table class="table table-zebra w-full">
+    <table class="table table-zebra w-full text-sm md:text-base">
       <thead class="text-base-content">
         <tr>
           <th>RNC</th>
           <th>Nombre</th>
-          <th>Nombre Comercial</th>
+          <th class="hidden sm:table-cell">Nombre Comercial</th>
+          <th class="hidden md:table-cell">Categoría</th>
+          <th class="hidden md:table-cell">Esquema de pago</th>
+          <th class="hidden lg:table-cell">Actividad económica</th>
+          <th class="hidden lg:table-cell">Rama gubernamental</th>
           <th>Estado</th>
           <th class="text-center">Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let company of companies">
-          <td>{{ company.rnc || "Sdsd" }}</td>
-          <td>{{ company.name }} X</td>
-          <td>{{ company.commercialName }}</td>
+        <tr *ngFor="let company of companies | filter : searchText">
+          <td>{{ company.rnc || "N/A" }}</td>
+          <td>{{ company.name }}</td>
+          <td class="hidden sm:table-cell">{{ company.commercialName }}</td>
+          <td class="hidden md:table-cell">{{ company.category }}</td>
+          <td class="hidden md:table-cell">{{ company.payment }}</td>
+          <td class="hidden lg:table-cell">{{ company.activity }}</td>
+          <td class="hidden lg:table-cell">{{ company.branch }}</td>
           <td>
             <span
               class="badge"
@@ -31,20 +47,21 @@
                 'badge-success': company.status === 'ACTIVO',
                 'badge-error': company.status === 'INACTIVO'
               }"
-              >{{ company.status }}</span
             >
+              {{ company.status }}
+            </span>
           </td>
           <td class="text-center">
-            <div class="flex gap-2 justify-center">
+            <div class="flex gap-2 justify-center flex-wrap">
               <button
                 (click)="onEdit(company)"
-                class="btn btn-sm btn-warning btn-outline"
+                class="btn btn-xs md:btn-sm btn-warning btn-outline"
               >
                 Editar
               </button>
               <button
                 (click)="onDelete(company.id)"
-                class="btn btn-sm btn-error btn-outline"
+                class="btn btn-xs md:btn-sm btn-error btn-outline"
               >
                 Eliminar
               </button>

@@ -4,16 +4,19 @@ import { CompanyService } from '../shared/services/company.service';
 import { Companies } from '../shared/interface/company.interface';
 import { CommonModule } from '@angular/common';
 import { SweetAlertService } from '../shared/services/sweet-alert.service';
+import { FormsModule } from '@angular/forms';
+import { FilterPipe } from '../shared/pipes/filter.pipe';
 
 @Component({
   selector: 'app-manage-company',
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, FormsModule, FilterPipe],
   templateUrl: './manage-company.component.html',
   styleUrl: './manage-company.component.css',
 })
 export class ManageCompanyComponent implements OnInit {
   companies: Companies[] = [];
   isLoading!: boolean;
+  searchText: string = '';
   constructor(
     private companyService: CompanyService,
     private sweetAlert: SweetAlertService,
@@ -29,6 +32,7 @@ export class ManageCompanyComponent implements OnInit {
     this.isLoading = true;
     this.companyService.getCompanies().subscribe((data: Companies[]) => {
       this.companies = data;
+      console.log(this.companies);
       this.isLoading = false;
     });
   }
